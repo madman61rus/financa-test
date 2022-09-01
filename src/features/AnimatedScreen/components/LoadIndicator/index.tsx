@@ -1,3 +1,4 @@
+import {useIsFocused} from '@react-navigation/native';
 import React, {useCallback, useEffect} from 'react';
 import {View} from 'react-native';
 import Animated, {
@@ -15,18 +16,29 @@ interface LoadIndicatorProps {
 
 const LoadIndicator = ({onEnd}: LoadIndicatorProps) => {
   const indicatorWidth = useSharedValue(0);
+  const isFocused = useIsFocused();
 
-  const handleAnimationEnd = useCallback((finished) => {console.log('1111', finished) ; onEnd()}, [onEnd]);
+  const handleAnimationEnd = useCallback(() => {
+    onEnd();
+  }, [onEnd]);
 
   useEffect(() => {
-    indicatorWidth.value = withTiming(
-      convertWidth(120),
-      {
-        duration: 4500,
-      },
-      (finished) => runOnJS(handleAnimationEnd)(finished),
-    );
-  }, [handleAnimationEnd]);
+    if (isFocused) {
+      indicatorWidth.value = withTiming(
+        convertWidth(120),
+        {
+          duration: 4500,
+        },
+        () => runOnJS(handleAnimationEnd)(),
+      );
+    }
+  }, [handleAnimationEnd, isFocused, indicatorWidth]);
+
+  useEffect(() => {
+    if (!isFocused) {
+      indicatorWidth.value = 0;
+    }
+  }, [isFocused, indicatorWidth]);
 
   const animatedStyles = useAnimatedStyle(() => {
     return {

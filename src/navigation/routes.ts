@@ -3,6 +3,7 @@ enum ScreenRoutes {
   ANIMATION_SCREEN = 'ANIMATION_SCREEN',
   AUTH_SCREEN = 'AUTH_SCREEN',
   AUTH_STACK = 'AUTH_STACK',
+  LOGIN_SCREEN = 'LOGIN_SCREEN',
 }
 
 export default ScreenRoutes;

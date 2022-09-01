@@ -10,9 +10,17 @@ import RoundedButton, {
 } from '../../../../components/buttons/RoundedButton';
 import {convertHeight, convertWidth} from '../../../../utils/dimensions';
 import {AuthScreenProps} from '../../../../types/navigation/authStack';
+import ScreenRoutes from '../../../../navigation/routes';
 
 const AuthScreen = ({navigation}: AuthScreenProps) => {
-  const handleLoginPress = useCallback(() => {}, [navigation]);
+  const handleLoginPress = useCallback(() => {
+    navigation.navigate(ScreenRoutes.SPLASH_SCREEN, {
+      screen: ScreenRoutes.AUTH_STACK,
+      params: {
+        screen: ScreenRoutes.LOGIN_SCREEN,
+      },
+    });
+  }, [navigation]);
 
   return (
     <LinearGradient colors={['#11BDFD', '#0A83F8']} style={styles.screen}>

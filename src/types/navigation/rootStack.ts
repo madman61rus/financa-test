@@ -2,13 +2,21 @@ import type {NativeStackScreenProps} from '@react-navigation/native-stack';
 import ScreenRoutes from '../../navigation/routes';
 
 type RootStackParamList = {
-  [ScreenRoutes.ANIMATION_SCREEN]: undefined;
+  [ScreenRoutes.SPLASH_SCREEN]: {
+    screen?: ScreenRoutes.AUTH_STACK;
+    params?: {
+      screen: ScreenRoutes.LOGIN_SCREEN | ScreenRoutes.AUTH_SCREEN;
+    };
+  };
   [ScreenRoutes.AUTH_STACK]: {
-    screen: ScreenRoutes.AUTH_SCREEN;
+    screen?: ScreenRoutes;
+    params?: {
+      screen: ScreenRoutes.LOGIN_SCREEN | ScreenRoutes.AUTH_SCREEN;
+    };
   };
 };
 
 export type AnimatedScreenProps = NativeStackScreenProps<
   RootStackParamList,
-  ScreenRoutes.ANIMATION_SCREEN
+  ScreenRoutes.SPLASH_SCREEN
 >;

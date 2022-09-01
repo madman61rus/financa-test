@@ -11,12 +11,19 @@ import ScreenRoutes from '../../navigation/routes';
 import styles from './styles';
 import {AnimatedScreenProps} from '../../types/navigation/rootStack';
 
-const AnimatedScreen = ({navigation}: AnimatedScreenProps) => {
+const AnimatedScreen = ({navigation, route}: AnimatedScreenProps) => {
+  const screen = route.params?.screen;
+  const params = route.params?.params;
+
   const handleLoadEnd = useCallback(() => {
+    if (screen && params) {
+      navigation.navigate(screen, {screen: params.screen});
+      return;
+    }
     navigation.navigate(ScreenRoutes.AUTH_STACK, {
       screen: ScreenRoutes.AUTH_SCREEN,
     });
-  }, [navigation]);
+  }, [navigation, screen, params]);
 
   return (
     <LinearGradient colors={['#11BDFD', '#0A83F8']} style={styles.screen}>

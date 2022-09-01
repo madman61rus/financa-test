@@ -12,7 +12,7 @@ import {convertHeight, convertWidth} from '../../../../utils/dimensions';
 import {AuthScreenProps} from '../../../../types/navigation/authStack';
 import ScreenRoutes from '../../../../navigation/routes';
 
-const AuthScreen = ({navigation}: AuthScreenProps) => {
+const AuthScreen: React.FC<AuthScreenProps> = ({navigation}) => {
   const handleLoginPress = useCallback(() => {
     navigation.navigate(ScreenRoutes.SPLASH_SCREEN, {
       screen: ScreenRoutes.AUTH_STACK,

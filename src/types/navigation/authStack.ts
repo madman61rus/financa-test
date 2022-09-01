@@ -1,7 +1,7 @@
 import type {NativeStackScreenProps} from '@react-navigation/native-stack';
 import ScreenRoutes from '../../navigation/routes';
 
-type RootStackParamList = {
+export type AuthStackParamList = {
   [ScreenRoutes.AUTH_SCREEN]: undefined;
   [ScreenRoutes.LOGIN_SCREEN]: undefined;
   [ScreenRoutes.SPLASH_SCREEN]: {
@@ -13,11 +13,11 @@ type RootStackParamList = {
 };
 
 export type AuthScreenProps = NativeStackScreenProps<
-  RootStackParamList,
+  AuthStackParamList,
   ScreenRoutes.AUTH_SCREEN
 >;
 
 export type LoginScreenProps = NativeStackScreenProps<
-  RootStackParamList,
+  AuthStackParamList,
   ScreenRoutes.LOGIN_SCREEN
 >;

@@ -1,7 +1,7 @@
 import type {NativeStackScreenProps} from '@react-navigation/native-stack';
 import ScreenRoutes from '../../navigation/routes';
 
-type RootStackParamList = {
+export type RootStackParamList = {
   [ScreenRoutes.SPLASH_SCREEN]: {
     screen?: ScreenRoutes.AUTH_STACK;
     params?: {

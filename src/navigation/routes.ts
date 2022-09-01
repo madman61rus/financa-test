@@ -1,0 +1,8 @@
+enum ScreenRoutes {
+  SPLASH_SCREEN = 'SPLASH_SCREEN',
+  ANIMATION_SCREEN = 'ANIMATION_SCREEN',
+  AUTH_SCREEN = 'AUTH_SCREEN',
+  AUTH_STACK = 'AUTH_STACK',
+}
+
+export default ScreenRoutes;
